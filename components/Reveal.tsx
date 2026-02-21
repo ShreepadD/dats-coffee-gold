@@ -60,10 +60,11 @@ export default function Reveal({
   }, [threshold, rootMargin, visibleClass]);
 
   return (
-  <div ref={ref}>
-    <Tag className={`${baseClass} ${delayClass} ${className}`.trim()}>
-      {children}
-    </Tag>
-  </div>
+  <Tag
+    ref={ref}
+    className={`${baseClass} ${delayClass} ${className}`.trim()}
+  >
+    {children}
+  </Tag>
 );
 }
