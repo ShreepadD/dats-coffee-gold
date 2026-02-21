@@ -39,7 +39,7 @@ export default function Reveal({
   rootMargin = "0px",
   as: Tag = "div",
 }: RevealProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
