@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --parchment: #F7F0E3;
+  --espresso:  #1C0F07;
+  --gold:      #C8922A;
+  --gold-pale: #F3DFA8;
+  --sage:      #7A8C6E;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart:cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset sticky header height when jumping to anchors */
+  scroll-padding-top: 88px;
+}
+
+body {
+  background-color: var(--parchment);
+  color: var(--espresso);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #EDE0C8; }
+::-webkit-scrollbar-thumb  { background: var(--gold); border-radius: 99px; }
+
+/* ─── Font class helpers ────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-cormorant), Georgia, serif; }
+.font-body    { font-family: var(--font-dm-sans), system-ui, sans-serif; }
+
+/* ─── Reusable section label ────────────────────────────────────────────────── */
+@layer components {
+  /* Eyebrow text above section heading */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-gold text-xs font-semibold tracking-[0.28em] uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Section headings */
+  .heading-xl {
+    @apply font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] text-espresso-800;
+  }
+  .heading-lg {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-espresso-800;
+  }
+
+  /* Gold accent line separator */
+  .gold-rule {
+    @apply block w-12 h-[2px] bg-gold mt-4 rounded-full;
+  }
+
+  /* Primary CTA button */
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden
+           bg-gold hover:bg-gold-muted
+           text-white font-body font-semibold text-sm tracking-wide
+           px-8 py-3.5 rounded-full
+           shadow-warm-md hover:shadow-gold-glow
+           transition-all duration-400 ease-out-expo
+           active:scale-[0.97];
+  }
+  .btn-gold::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Ghost CTA button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2.5
+           border border-espresso-200 hover:border-gold
+           text-espresso-600 hover:text-gold
+           font-body font-semibold text-sm tracking-wide
+           px-8 py-3.5 rounded-full
+           transition-all duration-300 ease-out-expo;
+  }
+
+  /* Card with hover lift */
+  .card-lift {
+    @apply transition-all duration-500 ease-out-expo
+           hover:-translate-y-2 hover:shadow-warm-lg;
+  }
+
+  /* Image placeholder */
+  .img-placeholder {
+    @apply bg-gradient-to-br from-espresso-100 to-parchment-300
+           flex flex-col items-center justify-center gap-2
+           text-espresso-300 select-none;
+  }
+}
+
+/* ─── Reveal animation states ───────────────────────────────────────────────── */
+/* These classes are toggled by useScrollReveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s var(--ease-expo), transform 0.75s var(--ease-expo);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+/* ─── Gradient text ─────────────────────────────────────────────────────────── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C8922A 0%, #E5B563 50%, #A07222 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Grain texture overlay ─────────────────────────────────────────────────── */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Nav underline animation ───────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  border-radius: 99px;
+  transition: width 0.3s var(--ease-expo);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Gold shimmer loading bar ──────────────────────────────────────────────── */
+.shimmer-bar {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 146, 42, 0.25) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* ─── Video / hero overflow clip ────────────────────────────────────────────── */
+.parallax-wrap {
+  position: absolute;
+  inset: -15%;
+  overflow: hidden;
+}
