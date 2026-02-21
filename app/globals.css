@@ -199,3 +199,14 @@ body {
   inset: -15%;
   overflow: hidden;
 }
+/* Reveal animation fallback */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
