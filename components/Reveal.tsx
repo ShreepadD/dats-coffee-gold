@@ -10,9 +10,12 @@ interface RevealProps {
   delayClass?: string;
   threshold?: number;
   rootMargin?: string;
-  as?: keyof JSX.IntrinsicElements;
 }
 
+/**
+ * Reveal — scroll-triggered reveal wrapper
+ * Safe for production (no polymorphic ref issues)
+ */
 export default function Reveal({
   children,
   className = "",
@@ -21,9 +24,8 @@ export default function Reveal({
   delayClass = "",
   threshold = 0.12,
   rootMargin = "0px",
-  as: Tag = "div",
 }: RevealProps) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -33,22 +35,22 @@ export default function Reveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           el.classList.add(visibleClass);
-          observer.unobserve(el);
+          observer.disconnect();
         }
       },
       { threshold, rootMargin }
     );
 
     observer.observe(el);
-    return () => observer.unobserve(el);
+    return () => observer.disconnect();
   }, [threshold, rootMargin, visibleClass]);
 
   return (
-    <Tag
+    <div
       ref={ref}
       className={`${baseClass} ${delayClass} ${className}`.trim()}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
