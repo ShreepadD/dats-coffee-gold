@@ -60,12 +60,10 @@ export default function Reveal({
   }, [threshold, rootMargin, visibleClass]);
 
   return (
-    // @ts-expect-error — polymorphic `as` prop, types are fine at runtime
-    <Tag
-      ref={ref}
-      className={`${baseClass} ${delayClass} ${className}`.trim()}
-    >
+  <div ref={ref}>
+    <Tag className={`${baseClass} ${delayClass} ${className}`.trim()}>
       {children}
     </Tag>
-  );
+  </div>
+);
 }
