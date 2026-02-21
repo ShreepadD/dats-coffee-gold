@@ -46,7 +46,7 @@ export default function Reviews() {
                   className="font-display text-[80px] leading-none text-parchment-300 group-hover:text-gold-pale transition-colors duration-500 select-none h-10 flex items-start"
                   aria-hidden="true"
                 >
-                  "
+                  &quot;
                 </div>
 
                 {/* Review text */}
