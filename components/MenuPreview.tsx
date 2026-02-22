@@ -34,8 +34,8 @@ export default function MenuPreview() {
       className={`
         relative px-5 py-2 font-body text-sm sm:text-base transition-all
         ${activeIndex === index
-          ? "text-espresso-900 font-semibold"
-          : "text-espresso-400 hover:text-espresso-700"}
+  ? "text-espresso-900 font-semibold scale-105"
+  : "text-espresso-400 hover:text-espresso-700"}
       `}
     >
       {section.category}
@@ -49,7 +49,8 @@ export default function MenuPreview() {
 </div>
 
 {/* Active Menu Panel */}
-<Reveal key={MENU[activeIndex].category}>
+<Reveal key={MENU[activeIndex].category}
+  className="animate-menu-fade">
   <div className="max-w-xl mx-auto bg-white rounded-3xl shadow-warm-lg overflow-hidden">
     
     {/* Header */}
