@@ -29,7 +29,7 @@ export default function Hero() {
     let ticking = false;
 
     const update = () => {
-      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1.08)`;
+      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1.02)`;
       ticking = false;
     };
 
@@ -67,7 +67,7 @@ export default function Hero() {
   loop
   playsInline
   preload="auto"
-  className="absolute inset-0 w-full h-full object-cover z-0"
+  className="absolute inset-0 w-full h-full object-cover md:object-contain bg-espresso-950 z-0"
   aria-hidden="true"
 >
   <source src="/videos/coffee_filling_video_Header.mp4" type="video/mp4" />
