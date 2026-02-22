@@ -5,11 +5,11 @@ import { MENU } from "@/lib/constants";
 
 export default function MenuPreview() {
   return (
-    <section id="menu" className="bg-espresso-50 py-24 px-6">
+    <section id="menu" className="bg-espresso-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <Reveal className="mb-20 flex flex-col items-center text-center">
+        <Reveal className="mb-14 flex flex-col items-center text-center gap-4">
   <span className="eyebrow mb-3">Our Menu</span>
 
   <h2 className="heading-lg mb-6">
@@ -28,7 +28,11 @@ export default function MenuPreview() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8">
           {MENU.map((section, si) => (
             <Reveal key={section.category} delayClass={`reveal-delay-${si + 1}`}>
-              <div className="bg-white rounded-3xl overflow-hidden shadow-warm-sm hover:shadow-warm-md transition-shadow duration-500">
+              <div className={`rounded-3xl overflow-hidden transition-all duration-500
+  ${si === 0
+    ? "bg-white shadow-warm-lg scale-[1.02]"
+    : "bg-white/90 shadow-warm-sm hover:shadow-warm-md"}
+`}>
 
                 {/* Category header */}
                 <div className="px-7 pt-7 pb-5 border-b border-parchment-200">
@@ -38,14 +42,14 @@ export default function MenuPreview() {
                 </div>
 
                 {/* Items */}
-                <ul className="px-7 py-5 space-y-5">
+                <ul className="px-7 py-6 space-y-4">
                   {section.items.map((item, ii) => (
                     <li
                       key={item.name}
                       className="group flex items-start justify-between gap-4 pb-5 border-b border-parchment-200/60 last:border-0 last:pb-0"
                     >
                       <div className="flex-1 min-w-0">
-                        <p className="font-body font-semibold text-espresso-800 text-sm group-hover:text-gold transition-colors duration-300 leading-snug">
+                        <p className="font-body font-semibold text-espresso-800 text-[15px]">
                           {item.name}
                         </p>
                         <p className="text-espresso-400 text-xs font-body mt-0.5 leading-snug">
