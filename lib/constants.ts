@@ -69,25 +69,25 @@ export const FEATURES = [
     icon: "wifi",
     title: "Blazing Wi-Fi",
     sub: "100 Mbps",
-    desc: "Dedicated enterprise-grade fibre. Uninterrupted video calls, massive uploads, zero buffering.",
+    desc: "Enterprise-grade fibre for calls, uploads, and uninterrupted work.",
   },
   {
     icon: "paw",
     title: "Pet-Friendly",
     sub: "Always welcome",
-    desc: "Bring your dog or cat. Fresh water bowls, a shaded patio, and a staff that loves animals.",
+    desc: "Fresh water, shaded seating, and a space your pets will love.",
   },
   {
     icon: "leaf",
     title: "Pure Veg",
     sub: "100% vegetarian",
-    desc: "Every single item on the menu is vegetarian. Thoughtfully sourced, lovingly prepared.",
+    desc: "100% vegetarian menu, thoughtfully sourced and freshly prepared.",
   },
   {
     icon: "plug",
     title: "Work-from-Café",
     sub: "Seats with power",
-    desc: "Plug points at every table, quiet zones, ergonomic seating. Stay all day — you're welcome.",
+    desc: "Power at every table, quiet zones, and seating built for long hours.",
   },
 ] as const;
 
