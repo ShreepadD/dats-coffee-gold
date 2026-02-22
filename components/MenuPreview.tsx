@@ -55,12 +55,15 @@ export default function MenuPreview() {
 
 {/* Active Menu Panel */}
 <Reveal key={MENU[activeIndex].category}>
+  <div className="relative max-w-xl mx-auto rounded-3xl shadow-warm-lg overflow-hidden group">
+
+  {/* Background image layer */}
   <div
-    className="relative max-w-xl mx-auto rounded-3xl shadow-warm-lg overflow-hidden bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center scale-105 transition-all duration-700 ease-out group-hover:scale-110"
     style={{
       backgroundImage: `url(${MENU_BACKGROUNDS[MENU[activeIndex].category]})`,
     }}
-  >
+  />
     {/* Dark overlay */}
     <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
 
