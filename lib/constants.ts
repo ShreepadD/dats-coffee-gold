@@ -47,8 +47,8 @@ export const HERO = {
   // ── Video (optional — disabled by default) ─────────────────────────────────
   // 🎬 To enable: place /public/videos/hero.mp4 and set videoEnabled: true
   // Recommended: short 10–20s loop, muted, no dialogue, warm café atmosphere
-  videoEnabled: false,                 // ✏️ Set to true when video is ready
-  video: "/videos/hero.mp4",
+  videoEnabled: true,                 // ✏️ Set to true when video is ready
+  video: "/videos/coffee_filling_video_Header.mp4",
 
   headline: { line1: "Where Every", line2: "Sip Feels Like", line3: "Home." },
   sub: "A premium pure-veg café in the heart of Magarpatta. Pet-friendly, Wi-Fi ready, and built for people who love their work as much as their coffee.",
@@ -105,28 +105,28 @@ export const MENU = [
   {
     category: "☕  Coffee",
     items: [
-      { name:"House Espresso",      price:"₹120", note:"Double shot, silky crema"          },
-      { name:"Signature Cold Brew", price:"₹180", note:"18-hr cold-steeped over ice"       },
-      { name:"Cardamom Latte",      price:"₹160", note:"Espresso, milk, ground cardamom"   },
-      { name:"Turmeric Flat White", price:"₹150", note:"Golden, smooth, wellness classic"  },
+      { name:"House Espresso",       note:"Double shot, silky crema"          },
+      { name:"Signature Cold Brew",  note:"18-hr cold-steeped over ice"       },
+      { name:"Cardamom Latte",       note:"Espresso, milk, ground cardamom"   },
+      { name:"Turmeric Flat White",  note:"Golden, smooth, wellness classic"  },
     ],
   },
   {
     category: "🥗  Bites",
     items: [
-      { name:"Avocado Toast",      price:"₹220", note:"Sourdough, chili flakes, EVOO"       },
-      { name:"Caprese Panini",     price:"₹200", note:"Mozzarella, tomato, basil pesto"     },
-      { name:"Quinoa Power Bowl",  price:"₹260", note:"Roasted veggies, tahini drizzle"    },
-      { name:"Pesto Focaccia",     price:"₹180", note:"House-baked, olives, sun-dried tom" },
+      { name:"Avocado Toast",       note:"Sourdough, chili flakes, EVOO"       },
+      { name:"Caprese Panini",      note:"Mozzarella, tomato, basil pesto"     },
+      { name:"Quinoa Power Bowl",   note:"Roasted veggies, tahini drizzle"    },
+      { name:"Pesto Focaccia",      note:"House-baked, olives, sun-dried tom" },
     ],
   },
   {
     category: "🍰  Sweets",
     items: [
-      { name:"Hazelnut Brownie",      price:"₹120", note:"Fudgy, warm, vanilla cream"          },
-      { name:"New York Cheesecake",   price:"₹180", note:"Classic baked, berry compote"        },
-      { name:"Biscoff Waffle",        price:"₹220", note:"Belgian waffle, Biscoff, cream"      },
-      { name:"Mango Chia Pudding",    price:"₹160", note:"Seasonal, chilled, plant-based"      },
+      { name:"Hazelnut Brownie",       note:"Fudgy, warm, vanilla cream"          },
+      { name:"New York Cheesecake",    note:"Classic baked, berry compote"        },
+      { name:"Biscoff Waffle",         note:"Belgian waffle, Biscoff, cream"      },
+      { name:"Mango Chia Pudding",     note:"Seasonal, chilled, plant-based"      },
     ],
   },
 ] as const;
@@ -136,9 +136,9 @@ export const MENU = [
 export const GALLERY = [
   { id:1, src:"/images/gallery-interior.jpg", alt:"Cozy café interior at golden hour", wide:true  },
   { id:2, src:"/images/gallery-latte.jpg",    alt:"Latte art poured with care",        wide:false },
-  { id:3, src:"/images/gallery-food.jpg",     alt:"Avocado toast on sourdough",        wide:false },
-  { id:4, src:"/images/gallery-pet.jpg",      alt:"A golden retriever enjoying a visit",wide:false},
-  { id:5, src:"/images/gallery-desk.jpg",     alt:"Remote work setup with cold brew",  wide:true  },
+  { id:3, src:"/images/gallery-food.jpg",     alt:"Healthy and Tasty",        wide:false },
+  { id:4, src:"/images/gallery-pet.jpg",      alt:"Pets Welcomed",wide:false},
+  { id:5, src:"/images/gallery-desk.jpg",     alt:"Wall of Fame",  wide:true  },
   { id:6, src:"/images/gallery-cold.jpg",     alt:"Cold brew in a frosted glass",      wide:false },
 ] as const;
 
