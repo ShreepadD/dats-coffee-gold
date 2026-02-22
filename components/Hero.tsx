@@ -58,13 +58,9 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="absolute inset-[-18%] will-change-transform">
 
-          {/* ── VIDEO (optional) ─────────────────────────────────────────────
-              🎬 Set HERO.videoEnabled = true in lib/constants.ts
-              Place your video at: /public/videos/hero.mp4
-              Recommended: 10–20s, muted, looping, warm café atmosphere
-          ─────────────────────────────────────────────────────────────────── */}
+        
           
-  // lines ~63–73 — FORCE VIDEO
+  {/* lines ~63–73 — FORCE VIDEO */}
 <video
   autoPlay
   muted
