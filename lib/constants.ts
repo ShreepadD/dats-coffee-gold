@@ -103,6 +103,7 @@ export const CATEGORIES = [
 // ── Menu Sections ─────────────────────────────────────────────────────────────
 export const MENU = [
   {
+    key: "coffee",
     category: "☕  Coffee",
     items: [
       { name:"House Espresso",       note:"Double shot, silky crema"          },
@@ -112,6 +113,7 @@ export const MENU = [
     ],
   },
   {
+    key: "bites",
     category: "🥗  Bites",
     items: [
       { name:"Avocado Toast",       note:"Sourdough, chili flakes, EVOO"       },
@@ -121,6 +123,7 @@ export const MENU = [
     ],
   },
   {
+    key: "sweets",
     category: "🍰  Sweets",
     items: [
       { name:"Hazelnut Brownie",       note:"Fudgy, warm, vanilla cream"          },
