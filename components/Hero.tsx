@@ -29,7 +29,7 @@ export default function Hero() {
     let ticking = false;
 
     const update = () => {
-      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1.02)`;
+      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1)`;
       ticking = false;
     };
 
@@ -56,7 +56,7 @@ export default function Hero() {
     >
       {/* ─── Background layer (parallax) ───────────────────────────────────── */}
       <div className="absolute inset-0 z-0">
-        <div ref={bgRef} className="absolute inset-[-18%] will-change-transform">
+        <div ref={bgRef} className="absolute inset-0 will-change-transform">
 
         
           
