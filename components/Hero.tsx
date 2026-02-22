@@ -193,22 +193,12 @@ export default function Hero() {
 // ── Hero background image component ───────────────────────────────────────────
 function HeroImage() {
   return (
-    <>
-      {/*
-        ✅ When /public/images/hero.jpg is ready:
-        Replace this placeholder div with:
-          <img src="/images/hero.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
-        Or with Next.js Image:
-          <Image src="/images/hero.jpg" alt="" fill className="object-cover" priority quality={90} />
-          (add `import Image from "next/image"` at the top)
-      */}
-      <div className="absolute inset-0 img-placeholder">
-        <div className="flex flex-col items-center gap-3 opacity-40">
-          <span className="text-6xl">☕</span>
-          <span className="text-xs font-body tracking-widest text-espresso-300">/images/hero.jpg</span>
-        </div>
-      </div>
-    </>
+    <img
+      src="/images/hero.jpg"
+      alt=""
+      className="absolute inset-0 w-full h-full object-cover"
+      aria-hidden="true"
+    />
   );
 }
 
