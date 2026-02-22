@@ -29,7 +29,7 @@ export default function Hero() {
     let ticking = false;
 
     const update = () => {
-      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1.18)`;
+      if (bg) bg.style.transform = `translate3d(0, ${window.scrollY * 0.38}px, 0) scale(1.08)`;
       ticking = false;
     };
 
@@ -63,31 +63,24 @@ export default function Hero() {
               Place your video at: /public/videos/hero.mp4
               Recommended: 10–20s, muted, looping, warm café atmosphere
           ─────────────────────────────────────────────────────────────────── */}
-          {HERO.videoEnabled ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              aria-hidden="true"
-            >
-              <source src={HERO.video} type="video/mp4" />
-              {/* Fallback image if browser can't play video */}
-              <HeroImage />
-            </video>
-          ) : (
-            /* ── IMAGE (default) ──────────────────────────────────────────
-               📸 Place your image at: /public/images/hero.jpg
-               Recommended: 1920×1080px, warm café interior, landscape
-            ─────────────────────────────────────────────────────────────── */
-            <HeroImage />
-          )}
+          {HERO.videoEnabled && (
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    className="absolute inset-0 w-full h-full object-cover"
+    aria-hidden="true"
+  >
+    <source src={HERO.video} type="video/mp4" />
+  </video>
+)}
         </div>
 
         {/* Multi-layer gradient for cinematic depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-espresso-900/65 via-espresso-900/35 to-espresso-900/10" />
-<div className="absolute inset-0 bg-gradient-to-t from-espresso-900/55 via-transparent to-espresso-900/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-espresso-900/45 md:from-espresso-900/60 via-espresso-900/20 md:via-espresso-900/30 to-transparent" />
+<div className="absolute inset-0 bg-gradient-to-t from-espresso-900/40 md:from-espresso-900/50 via-transparent to-transparent" />
 
         {/* Warm vignette */}
         <div
@@ -191,16 +184,16 @@ background: "radial-gradient(ellipse 70% 80% at 20% 60%, transparent 50%, rgba(2
 }
 
 // ── Hero background image component ───────────────────────────────────────────
-function HeroImage() {
-  return (
-    <img
-      src="/images/hero.jpg"
-      alt=""
-      className="absolute inset-0 w-full h-full object-cover"
-      aria-hidden="true"
-    />
-  );
-}
+// function HeroImage() {
+//   return (
+//     <img
+//       src="/images/hero.jpg"
+//       alt=""
+//       className="absolute inset-0 w-full h-full object-cover"
+//       aria-hidden="true"
+//     />
+//   );
+// }
 
 function ArrowRight() {
   return (
