@@ -45,7 +45,7 @@ export default function Features() {
         </Reveal>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {FEATURES.map((f, i) => (
             <Reveal
               key={f.title}
