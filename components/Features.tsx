@@ -45,7 +45,7 @@ export default function Features() {
         </Reveal>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 gap-6">
           {FEATURES.map((f, i) => (
             <Reveal
               key={f.title}
@@ -55,16 +55,17 @@ export default function Features() {
               <div
                 className="
                   h-full rounded-2xl border border-espresso-600/40
-                  bg-espresso-700/50 hover:bg-espresso-700/80
-                  p-7 flex flex-col gap-5
-                  transition-all duration-500 ease-out-expo
-                  hover:-translate-y-2 hover:border-gold/30
-                  hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)]
-                  cursor-default
+    bg-espresso-700/50 hover:bg-espresso-700/80
+    p-7 flex flex-col gap-5
+    items-center text-center md:items-start md:text-left
+    transition-all duration-500 ease-out-expo
+    hover:-translate-y-2 hover:border-gold/30
+    hover:shadow-[0_16px_48px_rgba(0,0,0,0.4)]
+    cursor-default
                 "
               >
                 {/* Icon container */}
-                <div className="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold transition-all duration-300 group-hover:scale-110">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold transition-all duration-300 group-hover:scale-110 md:self-start">
                   {ICONS[f.icon]}
                 </div>
 
