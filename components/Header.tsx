@@ -36,15 +36,18 @@ export default function Header() {
 
   return (
     <header
-      className={`
-        fixed top-0 left-0 right-0 z-50
-        transition-all duration-500 ease-out-expo
-        ${scrolled
-          ? "shadow-warm-md backdrop-blur-md bg-parchment-50/90 py-0"
-          : "bg-transparent py-0"
-        }
-      `}
-    >
+  className={`
+    fixed top-0 left-0 right-0 z-50
+    transition-all duration-500 ease-out-expo
+    ${
+      mobileOpen
+        ? "bg-espresso-900"
+        : scrolled
+          ? "shadow-warm-md backdrop-blur-md bg-parchment-50/90"
+          : "bg-transparent"
+    }
+  `}
+>
       {/* ── Top info bar (hides when scrolled) ────────────────────────────── */}
       <div
         className={`
@@ -156,12 +159,12 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`
-          md:hidden overflow-hidden transition-all duration-500 ease-out-expo
-          bg-parchment-50/98 backdrop-blur-sm border-t border-parchment-200
-          ${mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
-        `}
-      >
+  className={`
+    md:hidden overflow-hidden transition-all duration-500 ease-out-expo
+    bg-parchment-50 border-t border-parchment-200
+    ${mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
+  `}
+>
         <nav className="px-6 py-5 flex flex-col gap-4">
           {NAV.map((link) => (
             <a
