@@ -69,11 +69,10 @@ export default function Hero() {
     muted
     loop
     playsInline
-    preload="metadata"
-    className="absolute inset-0 w-full h-full object-cover"
-    aria-hidden="true"
+    preload="auto"
+    className="absolute inset-0 w-full h-full object-cover z-0"
   >
-    <source src={HERO.video} type="video/mp4" />
+    <source src="/videos/coffee_filling_video_Header.mp4" type="video/mp4" />
   </video>
 )}
         </div>
