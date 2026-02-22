@@ -86,14 +86,14 @@ export default function Hero() {
         </div>
 
         {/* Multi-layer gradient for cinematic depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-espresso-900/90 via-espresso-900/55 to-espresso-900/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-espresso-900/75 via-transparent to-espresso-900/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-espresso-900/65 via-espresso-900/35 to-espresso-900/10" />
+<div className="absolute inset-0 bg-gradient-to-t from-espresso-900/55 via-transparent to-espresso-900/15" />
 
         {/* Warm vignette */}
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse 70% 80% at 20% 60%, transparent 40%, rgba(28,15,7,0.4) 100%)",
+background: "radial-gradient(ellipse 70% 80% at 20% 60%, transparent 50%, rgba(28,15,7,0.22) 100%)",
           }}
         />
       </div>
