@@ -24,50 +24,59 @@ export default function MenuPreview() {
   </p>
 </Reveal>
 
-        {/* Menu columns */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8">
-          {MENU.map((section, si) => (
-            <Reveal key={section.category} delayClass={`reveal-delay-${si + 1}`}>
-              <div className={`rounded-3xl overflow-hidden transition-all duration-500
-  ${si === 0
-    ? "bg-white shadow-warm-lg scale-[1.02]"
-    : "bg-white/90 shadow-warm-sm hover:shadow-warm-md"}
-`}>
-
-                {/* Category header */}
-                <div className="px-7 pt-7 pb-5 border-b border-parchment-200">
-                  <h3 className="font-display text-xl font-bold text-espresso-700">
-                    {section.category}
-                  </h3>
-                </div>
-
-                {/* Items */}
-                <ul className="px-7 py-6 space-y-4">
-                  {section.items.map((item, ii) => (
-                    <li
-                      key={item.name}
-                      className="group flex items-start justify-between gap-4 pb-5 border-b border-parchment-200/60 last:border-0 last:pb-0"
-                    >
-                      <div className="flex-1 min-w-0">
-                        <p className="font-body font-semibold text-espresso-800 text-[15px]">
-                          {item.name}
-                        </p>
-                        <p className="text-espresso-400 text-xs font-body mt-0.5 leading-snug">
-                          {item.note}
-                        </p>
-                      </div>
-
-                      {/* Price badge
-                      <span className="shrink-0 inline-flex items-center bg-parchment-100 group-hover:bg-gold-pale border border-parchment-200 group-hover:border-gold/30 text-espresso-600 group-hover:text-espresso-800 font-body font-semibold text-xs px-3 py-1.5 rounded-full transition-all duration-300">
-                        {item.price}
-                      </span> */}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
+        {/* Sliding menu rail */}
+<div className="relative overflow-hidden">
+  <div
+    className="
+      flex gap-6
+      w-max
+      animate-menu-scroll
+      hover:[animation-play-state:paused]
+      px-4
+      overflow-x-auto
+      scrollbar-hide
+    "
+  >
+    {[...MENU, ...MENU].map((section, si) => (
+      <div
+        key={`${section.category}-${si}`}
+        className="
+          w-[300px] sm:w-[340px]
+          flex-shrink-0
+          bg-white
+          rounded-3xl
+          shadow-warm-sm
+          hover:shadow-warm-md
+          transition-all duration-300
+        "
+      >
+        {/* Category header */}
+        <div className="px-7 pt-7 pb-5 border-b border-parchment-200">
+          <h3 className="font-display text-xl font-bold text-espresso-700">
+            {section.category}
+          </h3>
         </div>
+
+        {/* Items */}
+        <ul className="px-7 py-6 space-y-4">
+          {section.items.map((item) => (
+            <li
+              key={item.name}
+              className="pb-4 border-b border-parchment-200/60 last:border-0"
+            >
+              <p className="font-body font-semibold text-espresso-800 text-[15px]">
+                {item.name}
+              </p>
+              <p className="text-espresso-400 text-xs font-body mt-0.5">
+                {item.note}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
 
         {/* CTA */}
         <Reveal className="text-center mt-12">
