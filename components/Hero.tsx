@@ -63,18 +63,20 @@ export default function Hero() {
               Place your video at: /public/videos/hero.mp4
               Recommended: 10–20s, muted, looping, warm café atmosphere
           ─────────────────────────────────────────────────────────────────── */}
-          {HERO.videoEnabled && (
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    preload="auto"
-    className="absolute inset-0 w-full h-full object-cover z-0"
-  >
-    <source src="/videos/coffee_filling_video_Header.mp4" type="video/mp4" />
-  </video>
-)}
+          
+  // lines ~63–73 — FORCE VIDEO
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="absolute inset-0 w-full h-full object-cover z-0"
+  aria-hidden="true"
+>
+  <source src="/videos/coffee_filling_video_Header.mp4" type="video/mp4" />
+</video>
+
         </div>
 
         {/* Multi-layer gradient for cinematic depth */}
