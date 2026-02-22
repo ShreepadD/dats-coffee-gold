@@ -1,9 +1,10 @@
 "use client";
-
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { MENU } from "@/lib/constants";
 
 export default function MenuPreview() {
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
     <section id="menu" className="bg-espresso-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
@@ -24,59 +25,58 @@ export default function MenuPreview() {
   </p>
 </Reveal>
 
-        {/* Sliding menu rail */}
-<div className="relative overflow-hidden">
-  <div
-    className="
-      flex gap-6
-      w-max
-      animate-menu-scroll
-      hover:[animation-play-state:paused]
-      px-4
-      overflow-x-auto
-      scrollbar-hide
-    "
-  >
-    {[...MENU, ...MENU].map((section, si) => (
-      <div
-        key={`${section.category}-${si}`}
-        className="
-          w-[300px] sm:w-[340px]
-          flex-shrink-0
-          bg-white
-          rounded-3xl
-          shadow-warm-sm
-          hover:shadow-warm-md
-          transition-all duration-300
-        "
-      >
-        {/* Category header */}
-        <div className="px-7 pt-7 pb-5 border-b border-parchment-200">
-          <h3 className="font-display text-xl font-bold text-espresso-700">
-            {section.category}
-          </h3>
-        </div>
+        {/* Category Tabs */}
+<div className="flex justify-center gap-3 sm:gap-6 mb-10">
+  {MENU.map((section, index) => (
+    <button
+      key={section.category}
+      onClick={() => setActiveIndex(index)}
+      className={`
+        relative px-5 py-2 font-body text-sm sm:text-base transition-all
+        ${activeIndex === index
+          ? "text-espresso-900 font-semibold"
+          : "text-espresso-400 hover:text-espresso-700"}
+      `}
+    >
+      {section.category}
 
-        {/* Items */}
-        <ul className="px-7 py-6 space-y-4">
-          {section.items.map((item) => (
-            <li
-              key={item.name}
-              className="pb-4 border-b border-parchment-200/60 last:border-0"
-            >
-              <p className="font-body font-semibold text-espresso-800 text-[15px]">
-                {item.name}
-              </p>
-              <p className="text-espresso-400 text-xs font-body mt-0.5">
-                {item.note}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </div>
+      {/* Gold underline */}
+      {activeIndex === index && (
+        <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gold rounded-full" />
+      )}
+    </button>
+  ))}
 </div>
+
+{/* Active Menu Panel */}
+<Reveal key={MENU[activeIndex].category}>
+  <div className="max-w-xl mx-auto bg-white rounded-3xl shadow-warm-lg overflow-hidden">
+    
+    {/* Header */}
+    <div className="px-7 pt-7 pb-5 border-b border-parchment-200 text-center">
+      <h3 className="font-display text-2xl font-bold text-espresso-700">
+        {MENU[activeIndex].category}
+      </h3>
+    </div>
+
+    {/* Items */}
+    <ul className="px-7 py-6 space-y-5">
+      {MENU[activeIndex].items.map((item) => (
+        <li
+          key={item.name}
+          className="border-b border-parchment-200/60 last:border-0 pb-4 last:pb-0"
+        >
+          <p className="font-body font-semibold text-espresso-800">
+            {item.name}
+          </p>
+          <p className="text-espresso-400 text-sm mt-1">
+            {item.note}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Reveal>
 
         {/* CTA */}
         <Reveal className="text-center mt-12">
