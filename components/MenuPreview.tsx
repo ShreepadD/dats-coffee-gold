@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Reveal from "@/components/Reveal";
 import { MENU } from "@/lib/constants";
 const MENU_BACKGROUNDS: Record<string, string> = {
@@ -8,26 +8,49 @@ const MENU_BACKGROUNDS: Record<string, string> = {
   Sweets: "/images/menu/sweets.jpg",
 };
 
+const MENU_OVERLAYS: Record<string, string> = {
+  Coffee: "from-black/70 via-black/40 to-black/20",
+  Bites: "from-emerald-900/70 via-emerald-900/40 to-black/20",
+  Sweets: "from-rose-900/70 via-rose-900/40 to-black/20",
+};
+
 export default function MenuPreview() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+const userInteractedRef = useRef(false);
+
+useEffect(() => {
+  if (userInteractedRef.current) return;
+
+  autoPlayRef.current = setInterval(() => {
+    setActiveIndex((prev) => (prev + 1) % MENU.length);
+  }, 4000); // 4 seconds per category
+
+  return () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+}, []);
+
+  console.log(
+  "ACTIVE:",
+  MENU[activeIndex].key,
+  MENU_BACKGROUNDS[MENU[activeIndex].key]
+);
   return (
-    <section id="menu" className="bg-espresso-50 py-16 px-6">
+
+<section id="menu" className="bg-espresso-50 px-6 pt-2 pb-24 md:pt-6 md:pb-32">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <Reveal className="mb-14 flex flex-col items-center text-center gap-4">
-  <span className="eyebrow mb-3">Our Menu</span>
+        <Reveal className="mb-8 flex flex-col items-center text-center gap-2">
+  
 
-  <h2 className="heading-lg mb-6">
-    Made with Love
-  </h2>
+  <h2 className="heading-lg">
+  Made with Love
+</h2>
 
-  <span className="gold-rule mx-auto mb-6" />
+<span className="gold-rule mx-auto mt-3 mb-6" />
 
-  <p className="text-espresso-400 text-sm sm:text-base font-body max-w-md leading-relaxed">
-    A curated vegetarian selection. Freshly prepared, thoughtfully crafted.
-    Full menu available at the café.
-  </p>
 </Reveal>
 
         {/* Category Tabs */}
@@ -35,7 +58,11 @@ export default function MenuPreview() {
   {MENU.map((section, index) => (
     <button
       key={section.category}
-      onClick={() => setActiveIndex(index)}
+      onClick={() => {
+  userInteractedRef.current = true;
+  if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  setActiveIndex(index);
+}}
       className={`
         relative px-5 py-2 font-body text-sm sm:text-base transition-all
         ${activeIndex === index
@@ -55,35 +82,74 @@ export default function MenuPreview() {
 
 {/* Active Menu Panel */}
 <Reveal key={MENU[activeIndex].category}>
-  <div className="relative max-w-xl mx-auto rounded-3xl shadow-warm-lg overflow-hidden group">
+
+<div
+onMouseEnter={() => {
+    userInteractedRef.current = true;
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  }}
+  className="
+  relative
+  max-w-2xl
+  min-h-[420px]
+  md:min-h-[480px]
+  mx-auto
+  rounded-[32px]
+  overflow-hidden
+  group
+">
+
 
   {/* Background image layer */}
-  <div
-    className="absolute inset-0 bg-cover bg-center scale-105 transition-all duration-700 ease-out group-hover:scale-110"
-    style={{
-      backgroundImage: `url(${MENU_BACKGROUNDS[MENU[activeIndex].category]})`,
-    }}
-  />
+
+ {/* Background image layer */}
+<div
+className="
+  absolute inset-0 bg-cover bg-center
+  scale-110
+  animate-menu-pan
+  transition-transform duration-[1200ms] ease-out
+  group-hover:scale-125
+"
+  style={{
+  backgroundImage: `url(${MENU_BACKGROUNDS[
+    MENU[activeIndex].category.replace(/[^A-Za-z]/g, "")
+  ]})`,
+}}
+/>
+
+{/* Dark overlay */}
+
+<div
+  className={`absolute inset-0 bg-gradient-to-t ${
+    MENU_OVERLAYS[MENU[activeIndex].category.replace(/[^A-Za-z]/g, "")]
+  }`}
+/>
+ 
     {/* Dark overlay */}
-    <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
+
 
     {/* Content */}
-    <div className="relative z-10">
-
+<div
+  className="
+    relative z-10
+    animate-[fadeSlideIn_0.45s_ease-out]
+  "
+>
       {/* Header */}
-      <div className="px-7 pt-7 pb-5 border-b border-white/20 text-center">
+      {/* <div className="px-10 pt-10 pb-7 border-b border-white/25 text-center">
         <h3 className="font-display text-2xl font-bold text-white">
           {MENU[activeIndex].category}
         </h3>
-      </div>
+      </div> */}
 
       {/* Items */}
-      <ul className="px-7 py-6 space-y-5">
+      <ul className="px-10 py-8 space-y-6">
         {MENU[activeIndex].items.map((item) => (
           <li
-            key={item.name}
-            className="border-b border-white/20 last:border-0 pb-4 last:pb-0"
-          >
+  key={item.name}
+  className="pb-6 last:pb-0"
+>
             <p className="font-body font-semibold text-white">
               {item.name}
             </p>
