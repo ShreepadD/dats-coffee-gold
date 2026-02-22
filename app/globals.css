@@ -221,3 +221,15 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+@keyframes menu-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-menu-scroll {
+  animation: menu-scroll 28s linear infinite;
+}
