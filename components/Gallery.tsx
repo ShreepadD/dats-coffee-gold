@@ -65,21 +65,12 @@ export default function Gallery() {
 
                   {/* Image area */}
                   <div className="absolute inset-0 overflow-hidden">
-                    {/*
-                      ✅ When your image is ready, replace the placeholder below with:
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]"
-                      />
-                    */}
-                    <div className="absolute inset-0 img-placeholder transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]">
-                      <div className="flex flex-col items-center gap-2 opacity-50">
-                        <span className="text-4xl">{emoji}</span>
-                        <span className="text-[10px] font-mono text-espresso-300">{filename}</span>
-                      </div>
-                    </div>
-                  </div>
+  <img
+    src={item.src}
+    alt={item.alt}
+    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]"
+  />
+</div>
 
                   {/* Hover scrim */}
                   <div className="absolute inset-0 bg-espresso-900/0 group-hover:bg-espresso-900/50 transition-colors duration-500" />
