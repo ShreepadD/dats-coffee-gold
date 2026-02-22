@@ -9,19 +9,23 @@ export default function MenuPreview() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <Reveal className="mb-16 flex flex-col items-start md:flex-row md:items-end md:justify-between gap-6">
-          <div>
-            <span className="eyebrow">Our Menu</span>
-            <h2 className="heading-lg mt-3">Made with Love</h2>
-            <span className="gold-rule" />
-          </div>
-          <p className="text-espresso-400 text-sm font-body max-w-sm leading-relaxed">
-            A curated vegetarian selection. All prices include taxes. Full menu available at the café.
-          </p>
-        </Reveal>
+        <Reveal className="mb-20 flex flex-col items-center text-center">
+  <span className="eyebrow mb-3">Our Menu</span>
+
+  <h2 className="heading-lg mb-6">
+    Made with Love
+  </h2>
+
+  <span className="gold-rule mx-auto mb-6" />
+
+  <p className="text-espresso-400 text-sm sm:text-base font-body max-w-md leading-relaxed">
+    A curated vegetarian selection. Freshly prepared, thoughtfully crafted.
+    Full menu available at the café.
+  </p>
+</Reveal>
 
         {/* Menu columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8">
           {MENU.map((section, si) => (
             <Reveal key={section.category} delayClass={`reveal-delay-${si + 1}`}>
               <div className="bg-white rounded-3xl overflow-hidden shadow-warm-sm hover:shadow-warm-md transition-shadow duration-500">
