@@ -2,6 +2,11 @@
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { MENU } from "@/lib/constants";
+const MENU_BACKGROUNDS: Record<string, string> = {
+  Coffee: "/images/menu/coffee.jpg",
+  Bites: "/images/menu/bites.jpg",
+  Sweets: "/images/menu/sweets.jpg",
+};
 
 export default function MenuPreview() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -49,33 +54,44 @@ export default function MenuPreview() {
 </div>
 
 {/* Active Menu Panel */}
-<Reveal key={MENU[activeIndex].category}
-  className="animate-menu-fade">
-  <div className="max-w-xl mx-auto bg-white rounded-3xl shadow-warm-lg overflow-hidden">
-    
-    {/* Header */}
-    <div className="px-7 pt-7 pb-5 border-b border-parchment-200 text-center">
-      <h3 className="font-display text-2xl font-bold text-espresso-700">
-        {MENU[activeIndex].category}
-      </h3>
-    </div>
+<Reveal key={MENU[activeIndex].category}>
+  <div
+    className="relative max-w-xl mx-auto rounded-3xl shadow-warm-lg overflow-hidden bg-cover bg-center"
+    style={{
+      backgroundImage: `url(${MENU_BACKGROUNDS[MENU[activeIndex].category]})`,
+    }}
+  >
+    {/* Dark overlay */}
+    <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
 
-    {/* Items */}
-    <ul className="px-7 py-6 space-y-5">
-      {MENU[activeIndex].items.map((item) => (
-        <li
-          key={item.name}
-          className="border-b border-parchment-200/60 last:border-0 pb-4 last:pb-0"
-        >
-          <p className="font-body font-semibold text-espresso-800">
-            {item.name}
-          </p>
-          <p className="text-espresso-400 text-sm mt-1">
-            {item.note}
-          </p>
-        </li>
-      ))}
-    </ul>
+    {/* Content */}
+    <div className="relative z-10">
+
+      {/* Header */}
+      <div className="px-7 pt-7 pb-5 border-b border-white/20 text-center">
+        <h3 className="font-display text-2xl font-bold text-white">
+          {MENU[activeIndex].category}
+        </h3>
+      </div>
+
+      {/* Items */}
+      <ul className="px-7 py-6 space-y-5">
+        {MENU[activeIndex].items.map((item) => (
+          <li
+            key={item.name}
+            className="border-b border-white/20 last:border-0 pb-4 last:pb-0"
+          >
+            <p className="font-body font-semibold text-white">
+              {item.name}
+            </p>
+            <p className="text-white/70 text-sm mt-1">
+              {item.note}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+    </div>
   </div>
 </Reveal>
 
