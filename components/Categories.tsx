@@ -41,14 +41,11 @@ export default function Categories() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-108"
                     />
                   */}
-                  <div className="absolute inset-0 img-placeholder transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]">
-                    <div className="flex flex-col items-center gap-2">
-                      <span className="text-5xl opacity-60">{cat.emoji}</span>
-                      <span className="text-[10px] font-mono opacity-40 text-espresso-400">
-                        {cat.image.replace("/images/", "")}
-                      </span>
-                    </div>
-                  </div>
+                  <img
+  src={cat.image}
+  alt={cat.title}
+  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.08]"
+/>
 
                   {/* Gradient overlay — lifts on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-espresso-900/95 via-espresso-900/30 to-transparent transition-opacity duration-500" />
