@@ -49,10 +49,10 @@ export default function MenuPreview() {
                         </p>
                       </div>
 
-                      {/* Price badge */}
+                      {/* Price badge
                       <span className="shrink-0 inline-flex items-center bg-parchment-100 group-hover:bg-gold-pale border border-parchment-200 group-hover:border-gold/30 text-espresso-600 group-hover:text-espresso-800 font-body font-semibold text-xs px-3 py-1.5 rounded-full transition-all duration-300">
                         {item.price}
-                      </span>
+                      </span> */}
                     </li>
                   ))}
                 </ul>
